@@ -2,8 +2,8 @@
 An opportunity to explore how to make an EV3 Robot move.
 
 Authors: Dave Fisher, David Mutchler, Vibha Alangar,
-their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+their colleagues, and Zachary Juday.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 # -----------------------------------------------------------------------------
 # TODO: 2.
@@ -14,6 +14,7 @@ their colleagues, and PUT_YOUR_NAME_HERE.
 
 import simple_rosebotics as rb
 import time
+import m2_sounds as sg
 
 def main():
     """ Calls the other functions to test/demo them. """
@@ -31,8 +32,14 @@ def go_two_seconds():
     # Use the DOT trick to figure out how to start, brake and coast motors.
     # -------------------------------------------------------------------------
     left_motor = rb.LargeMotor(rb.Plug("B"))  # Constructs Motor for left wheel
+    right_motor = rb.LargeMotor(rb.Plug("C"))
     left_motor.start()
-    time.sleep(2)
+    time.sleep(.5)
+    right_motor.start(5)
+    left_motor.start(5)
+    time.sleep(.5)
+    rb.Song(sg.main())
+    right_motor.brake()
     left_motor.brake()
 
 
